@@ -2,8 +2,8 @@
 ;  TwitchSwitch - Title achievement switch on twitch for TheBaartem
 ;  https://www.twitch.tv/thebaartem
 ;  Author  : MixidFinder
-;  Version : 1.0
-;  Date    : 2022-05-29
+;  Version : 1.1
+;  Date    : 2022-06-05
 ;*/
 #SingleInstance Force
 #NoEnv
@@ -18,15 +18,16 @@ SetKeyDelay -1
 SetMouseDelay -1
 SetBatchLines -1
 
-;Gui +AlwaysOnTop
+Gui +AlwaysOnTop
 Gui Add, Text,, Название стрима:
 Gui Add, Edit, vTitle
 Gui Add, Button, default, Apply
+Gui Add, Text,, z - Achievement
+Gui Add, Text,, x - Event
+Gui Add, Text,, c - Collectibles
+Gui Add, Text,, v - Mem
+Gui Add, Text,, b - YouTube
 Gui Show,, Twitch Switch
-Return 
-
-GuiClose:
-	ExitApp
 
 ButtonApply:
     Gui, Submit, NoHide 
@@ -34,7 +35,8 @@ ButtonApply:
     titleCount2 := titleCount
 	Return
 
-MButton::
+z::!z
+z::
 Achievement:
 SendRaw, 
 (LTrim
@@ -56,7 +58,8 @@ Clipboard :=
 Sleep, 3000
 Return
 
-XButton1::
+x::!x
+x::
 Event:
 SendRaw, 
 (LTrim
@@ -66,7 +69,8 @@ SendRaw,
 Sleep, 3000
 Return
 
-XButton2::
+c::!c
+c::
 Collectibles:
 SendRaw, 
 (LTrim
@@ -76,7 +80,8 @@ SendRaw,
 Sleep, 3000
 Return
 
-WheelDown::
+v::!v
+v::
 Mem:
 SendRaw, 
 (LTrim
@@ -86,7 +91,8 @@ SendRaw,
 Sleep, 3000
 Return
 
-WheelUp::
+b::!b
+b::
 YouTube:
 SendRaw, 
 (LTrim
@@ -96,7 +102,11 @@ SendRaw,
 Sleep, 3000
 Return
 
+F8::!F8
+F8::Pause
 
-F8::ExitApp
+F9::!F9
+F9::ExitApp
 
-F12::Pause
+GuiClose:
+	ExitApp
