@@ -2,7 +2,7 @@
 ;  TwitchSwitch - Title achievement switch on twitch for TheBaartem
 ;  https://www.twitch.tv/thebaartem
 ;  Author  : MixidFinder
-;  Version : 1.1
+;  Version : 1.1.1
 ;  Date    : 2022-06-05
 ;*/
 #SingleInstance Force
@@ -24,9 +24,11 @@ Gui Add, Edit, vTitle
 Gui Add, Button, default, Apply
 Gui Add, Text,, z - Achievement
 Gui Add, Text,, x - Event
-Gui Add, Text,, c - Collectibles
-Gui Add, Text,, v - Mem
+Gui Add, Text,, m - Collectibles
+Gui Add, Text,, n - Mem
 Gui Add, Text,, b - YouTube
+Gui Add, Text,, F8 - Pause
+Gui Add, Text,, F9 - Exit
 Gui Show,, Twitch Switch
 
 ButtonApply:
@@ -69,8 +71,8 @@ SendRaw,
 Sleep, 3000
 Return
 
-c::!c
-c::
+m::!m
+m::
 Collectibles:
 SendRaw, 
 (LTrim
@@ -80,8 +82,8 @@ SendRaw,
 Sleep, 3000
 Return
 
-v::!v
-v::
+n::!n
+n::
 Mem:
 SendRaw, 
 (LTrim
