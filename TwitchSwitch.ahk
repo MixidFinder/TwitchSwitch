@@ -2,8 +2,8 @@
 ;  TwitchSwitch - Title achievement switch on twitch for TheBaartem
 ;  https://www.twitch.tv/thebaartem
 ;  Author  : MixidFinder
-;  Version : 1.2
-;  Date    : 2022-06-06
+;  Version : 1.3
+;  Date    : 2022-06-09
 ;*/
 #SingleInstance Force
 #NoEnv
@@ -20,7 +20,7 @@ SetBatchLines -1
 
 Gui +AlwaysOnTop
 Gui Add, Text, x10 y6 w93 h13, Название стрима:
-Gui Add, Edit, x10 y25 w231 h21
+Gui Add, Edit, x10 y25 w231 h21 vTitle
 Gui Add, Button, x10 y52 w38 h23, Apply
 Gui Add, Text, x10 y81 w76 h13, z - Achievement
 Gui Add, Text, x10 y102 w42 h13, x - Event
@@ -29,7 +29,6 @@ Gui Add, Text, x61 y102 w38 h13, n - Mem
 Gui Add, Text, x108 y102 w59 h13, b - YouTube
 Gui Add, Text, x176 y102 w51 h13, F8 - Pause
 Gui Add, Text, x188 y81 w38 h13, F9 - Exit
-
 Gui Show, w258 h128, Twitch Switch
 
 F8::Suspend
@@ -142,8 +141,6 @@ ButtonApply:
     Gui, Submit, NoHide 
     titleCount := RegExReplace(Title, ".*?(\d+).*", "$1")
     titleCount2 := titleCount
-    titleText := ClipGetText()
-    ClipPutText(titleText)
 	Return
 
 z::!z
@@ -156,7 +153,7 @@ SendRaw,
 )
 Sleep, 30
 titleCount2 += 1
-titleFin := RegExReplace(titleText, titleCount, titleCount2)
+titleFin := RegExReplace(Title, titleCount, titleCount2)
 Sleep, 30
 ClipPutText(titleFin)
 Sleep, 30
